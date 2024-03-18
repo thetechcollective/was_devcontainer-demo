@@ -47,7 +47,9 @@ jobs:
       - name: Install cspell
         run: npm install -g cspell
       - name: Check spelling
-        run: cspell "_*/**.md"
+        run: |
+          cd docs
+          cspell "_*/**.md"
 
   markdownlint:
     runs-on: ubuntu-latest
@@ -58,7 +60,9 @@ jobs:
       - name: Install markdownlint-cli2
         run: npm install -g markdownlint-cli2
       - name: Check Markdown
-        run: markdownlint-cli2 "_*/**.md"
+        run: |
+          cd docs
+          markdownlint-cli2 "_*/**.md"
 
   # Deployment job
   deploy:
